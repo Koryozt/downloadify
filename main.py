@@ -15,7 +15,7 @@ def main():
 
     ap = argparse.ArgumentParser()
     ap.add_argument('-pid', '--playlist_id', required = True, help = 'Spotify playlist id to download')
-    ap.add_argument('-dir', '--directory', required=True, help = "The directory to save the downloaded files")
+    ap.add_argument('-dir', '--directory', required=False, help = "The directory to save the downloaded files")
 
     args = vars(ap.parse_args())
 
