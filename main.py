@@ -80,6 +80,7 @@ def main():
     tracks_group = playlist['tracks']['items']
 
     tracks = list()
+    i = 1
 
     for track_item in tracks_group:
         track_name = track_item['track']['name']
@@ -98,10 +99,12 @@ def main():
         try:
             video_url = 'https://www.youtube.com/watch?v=' + video_href[0]
 
+            track_name = track.replace('lyrics', '')
+
             if directory == '.' or not directory:
-                filename = f'./downloads/{name}/{track}.mp3'
+                filename = f'./downloads/{name}/{track_name}.mp3'
             else:
-                filename = directory + f'./{name}/{track}.mp3'
+                filename = directory + f'/{name}/{track_name}.mp3'
 
             if os.path.exists(filename):
                 print(f'{filename} already exists')
@@ -118,7 +121,7 @@ def main():
             with yt_dlp.YoutubeDL(options) as ydl:
                 ydl.download([video_info['webpage_url']])
 
-            print(f'Download complete... {filename}')
+            print(f'Finished {i} of {count}')
 
         except IndexError as e:
             print(e)
