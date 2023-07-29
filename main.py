@@ -4,12 +4,8 @@ import base64
 import argparse
 import yt_dlp
 import urllib
-import subprocess
 import re
-import socket
 import os
-
-# 6fAcSQBDK5W8Wm7v2Zqu4t
 
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 API_BASE = "https://api.spotify.com/v1/"
@@ -121,7 +117,7 @@ def main():
             with yt_dlp.YoutubeDL(options) as ydl:
                 ydl.download([video_info['webpage_url']])
 
-            print(f'Finished {i} of {count}')
+            print(f'Finished {i} - {count}')
 
         except IndexError as e:
             print(e)
